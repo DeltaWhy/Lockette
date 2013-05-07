@@ -395,7 +395,7 @@ public class Lockette extends PluginCore{
 		// Load in the alternate sign strings.
 		
 		altPrivate = strings.getString("alternate-private-tag");
-		if((altPrivate == null) || altPrivate.isEmpty() || (original && altPrivate.equals("Privé"))){
+		if((altPrivate == null) || altPrivate.isEmpty() || (original && altPrivate.equals("Privï¿½"))){
 			altPrivate = "Private";
 			strings.set("alternate-private-tag", altPrivate);
 		}
@@ -418,7 +418,7 @@ public class Lockette extends PluginCore{
 		altEveryone = "["+altEveryone+"]";
 		
 		altOperators = strings.getString("alternate-operators-tag");
-		if((altOperators == null) || altOperators.isEmpty() || (original && altOperators.equals("Opérateurs"))){
+		if((altOperators == null) || altOperators.isEmpty() || (original && altOperators.equals("Opï¿½rateurs"))){
 			altOperators = "Operators";
 			strings.set("alternate-operators-tag", altOperators);
 			stringChanged = true;
@@ -947,7 +947,7 @@ public class Lockette extends PluginCore{
 		
 		// Check known block types.
 		
-		if(type == Material.CHEST.getId()){
+		if(type == Material.CHEST.getId() || type == Material.TRAPPED_CHEST.getId()){
 			return(findBlockOwnerBase(block, null, false, false, false, false, false));
 		}
 		if((type == Material.DISPENSER.getId()) || (type == Material.FURNACE.getId()) || (type == Material.BURNING_FURNACE.getId()) ||
@@ -1035,7 +1035,7 @@ public class Lockette extends PluginCore{
 		
 		// Check known block types.
 		
-		if(type == Material.CHEST.getId()){
+		if(type == Material.CHEST.getId() || type == Material.TRAPPED_CHEST.getId()){
 			return(findBlockOwnerBase(block, ignore, true, false, false, false, false));
 		}
 		if((type == Material.DISPENSER.getId()) || (type == Material.FURNACE.getId()) || (type == Material.BURNING_FURNACE.getId()) ||
@@ -1273,7 +1273,7 @@ public class Lockette extends PluginCore{
 	protected static List<Block> findBlockUsers(Block block, Block signBlock){
 		int			type = block.getTypeId();
 		
-		if(type == Material.CHEST.getId()) return(findBlockUsersBase(block, true, false, false, false, 0));
+		if(type == Material.CHEST.getId() || type == Material.TRAPPED_CHEST.getId()) return(findBlockUsersBase(block, true, false, false, false, 0));
 		if(Lockette.protectTrapDoors) if(type == Material.TRAP_DOOR.getId()){
 			return(findBlockUsersBase(getTrapDoorAttachedBlock(block), false, false, false, true, 0));
 		}
